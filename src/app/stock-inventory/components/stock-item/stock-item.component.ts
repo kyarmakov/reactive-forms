@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-stock-item',
@@ -8,7 +9,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class StockItemComponent {
   @Input() parent: FormGroup;
-
+  @Output() added = new EventEmitter<Product>();
 
 
   /// GETTERS ///
@@ -40,7 +41,9 @@ export class StockItemComponent {
 
   ////////////////////
   onAddProduct(): void {
-    if (this.item.valid)
-      console.log(this.item.value);
+    if (this.item.valid) {
+      this.added.emit(this.item.value);
+      this.item.reset();
+    }
   }
 }

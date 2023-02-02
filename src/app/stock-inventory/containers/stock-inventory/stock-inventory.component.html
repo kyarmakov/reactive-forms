@@ -1,7 +1,13 @@
 <div class="stock-inventory">
 
   <form [formGroup]="form">
-    <app-stock-item [parent]="form"></app-stock-item>
+
+    <app-stock-item 
+      [parent]="form"
+      (added)="onAddProduct($event)"
+    >
+    </app-stock-item>
+
   </form>
 
   <!-- <pre>{{ item.valid | json }}</pre> -->

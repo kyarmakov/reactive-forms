@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { CustomValidationService } from '../../services/custom-validation.service';
+import { HttpService } from '../../services/http.service';
+
+import { Product } from '../../models/product.model';
+
+
 
 @Component({
   selector: 'app-stock-inventory',
@@ -19,12 +25,16 @@ export class StockInventoryComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private customValidator: CustomValidationService
+    private customValidator: CustomValidationService,
+    private http: HttpService
   ) {}
 
 
   ngOnInit(): void {
   }
 
- 
+  onAddProduct(product: Product): void {
+    this.http.addProduct(product)
+      .subscribe((product: Product) => console.log(product))
+  }
 }
