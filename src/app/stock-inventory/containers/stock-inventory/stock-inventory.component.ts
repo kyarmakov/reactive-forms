@@ -26,36 +26,5 @@ export class StockInventoryComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  /// GETTERS ///
-  get item() {
-    return this.form.get('item');
-  }
-  get name() {
-    return this.item.get('name');
-  }
-  get price() {
-    return this.item.get('price');
-  }
-
-  /// VALIDATORS ///
-  required(control: string): boolean {
-    return (
-      this.item.get(`${control}`).hasError('required') &&
-      this.item.get(`${control}`).touched
-    ); 
-  }
-
-  get invalidPrice(): boolean {
-    return (
-      this.price.hasError('invalidPrice') &&
-      this.price.dirty &&
-      !this.required('price')
-    );
-  }
-
-  ////////////////////
-  onAddProduct(): void {
-    if (this.item.valid)
-      console.log(this.item.value);
-  }
+ 
 }

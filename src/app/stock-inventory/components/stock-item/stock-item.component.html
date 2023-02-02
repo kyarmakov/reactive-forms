@@ -1,0 +1,51 @@
+<div [formGroup]="parent">
+  <div class="create-product" formGroupName="item">
+    <div class="form-group">
+      <input 
+        type="text" 
+        class="form-input"
+        placeholder="Product Name"
+        [ngClass]="{
+          'is-invalid': name.invalid && name.touched,
+          'is-valid': name.valid && name.touched
+        }"
+        formControlName="name"
+      >
+      <small class="error"
+             *ngIf="required('name')">Name is required</small>
+  
+    </div>
+  
+    <div class="form-group">
+      <input 
+        type="number" 
+        class="form-input"
+        min="10"
+        step="10"
+        placeholder="Product Price $"
+        [ngClass]="{
+          'is-invalid': price.invalid && price.touched,
+          'is-valid': price.valid && price.touched
+        }"
+        formControlName="price"
+      >
+      <small 
+        class="error"
+        *ngIf="required('price')">Price is required</small>
+  
+      <small 
+      class="error"
+      *ngIf="invalidPrice">Price cannot be below $10</small>
+  
+    </div>
+  
+    <button
+      type="button"
+      class="btn"
+      [disabled]="item.invalid"
+      (click)="onAddProduct()"
+    >
+      Add Product
+    </button>
+  </div>
+</div>
