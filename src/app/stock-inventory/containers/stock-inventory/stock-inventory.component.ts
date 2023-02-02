@@ -52,4 +52,10 @@ export class StockInventoryComponent implements OnInit {
       !this.required('price')
     );
   }
+
+  ////////////////////
+  onAddProduct(): void {
+    if (this.item.valid)
+      console.log(this.item.value);
+  }
 }

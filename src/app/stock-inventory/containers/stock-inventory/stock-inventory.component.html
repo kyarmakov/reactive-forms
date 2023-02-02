@@ -45,12 +45,13 @@
         type="button"
         class="btn"
         [disabled]="item.invalid"
+        (click)="onAddProduct()"
       >
         Add Product
       </button>
     </div>
   </form>
 
-  <pre>{{ price.hasError('invalidPrice') | json }}</pre>
+  <pre>{{ item.valid | json }}</pre>
 
 </div>
