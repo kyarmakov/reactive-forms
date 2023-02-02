@@ -1,0 +1,17 @@
+.stock-inventory {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-top: 32px;
+
+  .create-product {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    column-gap: 24px;
+  }
+
+}
+
