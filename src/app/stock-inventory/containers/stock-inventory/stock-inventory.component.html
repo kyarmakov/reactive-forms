@@ -2,27 +2,55 @@
 
   <form [formGroup]="form">
     <div class="create-product" formGroupName="item">
-      <input 
-        type="text" 
-        class="form-input"
-        placeholder="Product Name"
-        formControlName="name"
-      >
+      <div class="form-group">
+        <input 
+          type="text" 
+          class="form-input"
+          placeholder="Product Name"
+          [ngClass]="{
+            'is-invalid': name.invalid && name.touched,
+            'is-valid': name.valid && name.touched
+          }"
+          formControlName="name"
+        >
+        <small class="error"
+               *ngIf="required('name')">Name is required</small>
+
+      </div>
   
-      <input 
-        type="number" 
-        class="form-input"
-        placeholder="Product Price"
-        formControlName="price"
-      >
+      <div class="form-group">
+        <input 
+          type="number" 
+          class="form-input"
+          min="10"
+          step="10"
+          placeholder="Product Price $"
+          [ngClass]="{
+            'is-invalid': price.invalid && price.touched,
+            'is-valid': price.valid && price.touched
+          }"
+          formControlName="price"
+        >
+        <small 
+          class="error"
+          *ngIf="required('price')">Price is required</small>
+
+        <small 
+        class="error"
+        *ngIf="invalidPrice">Price cannot be below $10</small>
+
+      </div>
   
       <button
         type="button"
         class="btn"
+        [disabled]="item.invalid"
       >
         Add Product
       </button>
     </div>
   </form>
+
+  <pre>{{ price.hasError('invalidPrice') | json }}</pre>
 
 </div>
