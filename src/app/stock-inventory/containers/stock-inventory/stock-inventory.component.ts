@@ -16,7 +16,11 @@ import { Product } from '../../models/product.model';
 export class StockInventoryComponent implements OnInit {
   form: FormGroup = this.fb.group({
     item: this.fb.group({
-      name: ['', [Validators.required]],
+      name: [
+        '', 
+        [Validators.required], 
+        [this.customValidator.validateProductNameNotTaken.bind(this.customValidator)]
+      ],
       price: [null, [Validators.required, this.customValidator.validatePrice]]
     }),
 

@@ -39,6 +39,13 @@ export class StockItemComponent {
     );
   }
 
+  get productNameTaken(): boolean {
+    return (
+      this.name.hasError('productNameTaken') &&
+      this.name.touched
+    );
+  }
+
   ////////////////////
   onAddProduct(): void {
     if (this.item.valid) {
