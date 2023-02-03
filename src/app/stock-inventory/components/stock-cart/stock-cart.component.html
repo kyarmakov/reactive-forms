@@ -7,14 +7,14 @@
         <span>
           {{ cartItem.value.product_id }}
         </span>
-        <input 
-          type="number"
-          min="10"
-          max="1000"
-          step="10"
-          class="cart-input"
-          formControlName="quantity"
-        >
+
+        <app-stock-counter 
+          [max]="1000"
+          [min]="10"
+          [step]="10"
+          formControlName="quantity">
+        </app-stock-counter>
+        
         <button
           type="button"
           (click)="handleRemove(cartItem, i)"
