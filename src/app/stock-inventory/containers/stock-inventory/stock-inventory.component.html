@@ -1,12 +1,15 @@
 <div class="stock-inventory">
 
-  <form [formGroup]="form">
+  <form class="form" [formGroup]="form">
 
     <app-stock-item 
       [parent]="form"
       (added)="onAddProduct($event)"
     >
     </app-stock-item>
+
+    <app-stock-selector [parent]="form">
+    </app-stock-selector>
 
   </form>
 

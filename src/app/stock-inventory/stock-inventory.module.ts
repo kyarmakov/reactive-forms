@@ -5,12 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { StockInventoryComponent } from './containers/stock-inventory/stock-inventory.component';
 import { StockItemComponent } from './components/stock-item/stock-item.component';
+import { StockSelectorComponent } from './components/stock-selector/stock-selector.component';
 
 
 @NgModule({
   declarations: [
     StockInventoryComponent,
-    StockItemComponent
+    StockItemComponent,
+    StockSelectorComponent
   ],
   imports: [
     CommonModule,
