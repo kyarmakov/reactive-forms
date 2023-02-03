@@ -29,7 +29,8 @@ export class StockInventoryComponent implements OnInit {
     selector: this.fb.group({
       product_id: ["", [Validators.required]],
       quantity: [10]
-    })
+    }),
+    cart: this.fb.array([])
   });
 
 
@@ -46,6 +47,8 @@ export class StockInventoryComponent implements OnInit {
         next: (products: Product[]) => this.products = products,
         error: (err: HttpErrorResponse) => console.log(err)
       })
+
+      
   }
 
   onCreateProduct(product: Product): void {
@@ -54,5 +57,9 @@ export class StockInventoryComponent implements OnInit {
         next: (product: Product) => console.log(product),
         error: (err: HttpErrorResponse) => console.log(err)
       })
+  }
+
+  createCartItem(product: Product): void {
+    console.log(product)
   }
 }
