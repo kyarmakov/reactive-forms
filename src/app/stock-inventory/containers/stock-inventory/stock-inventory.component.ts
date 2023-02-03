@@ -5,6 +5,7 @@ import { CustomValidationService } from '../../services/custom-validation.servic
 import { HttpService } from '../../services/http.service';
 
 import { Product } from '../../models/product.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 
@@ -14,6 +15,8 @@ import { Product } from '../../models/product.model';
   styleUrls: ['./stock-inventory.component.scss']
 })
 export class StockInventoryComponent implements OnInit {
+  products: Product[];
+
   form: FormGroup = this.fb.group({
     item: this.fb.group({
       name: [
@@ -25,7 +28,7 @@ export class StockInventoryComponent implements OnInit {
     }),
     selector: this.fb.group({
       product_id: [""],
-      quantity: [null]
+      quantity: [10]
     })
   });
 
@@ -38,10 +41,18 @@ export class StockInventoryComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.http.getProducts()
+      .subscribe({
+        next: (products: Product[]) => this.products = products,
+        error: (err: HttpErrorResponse) => console.log(err)
+      })
   }
 
   onCreateProduct(product: Product): void {
     this.http.createProduct(product)
-      .subscribe((product: Product) => console.log(product))
+      .subscribe({
+        next: (product: Product) => console.log(product),
+        error: (err: HttpErrorResponse) => console.log(err)
+      })
   }
 }

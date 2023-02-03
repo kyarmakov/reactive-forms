@@ -7,10 +7,20 @@
       formControlName="product_id"
     >
       <option value="" disabled>Select product...</option>
-      <option value=""></option>
+      <option 
+        [ngValue]="product.id" 
+        *ngFor="let product of products"
+      >
+        {{ product.name }}
+      </option>
     </select>
 
-    <input type="number" class="form-input" formControlName="quantity">
+    <app-stock-counter
+      [max]="1000"
+      [min]="10"
+      [step]="10"
+      formControlName="quantity"
+    ></app-stock-counter>
 
     <button
       type="button"
