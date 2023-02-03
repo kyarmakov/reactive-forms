@@ -4,7 +4,7 @@
       <input 
         type="text" 
         class="form-input"
-        placeholder="Product Name"
+        placeholder="Product Name (Product #123)"
         [ngClass]="{
           'is-invalid': name.invalid && name.touched,
           'is-valid': name.valid && name.touched
@@ -17,6 +17,10 @@
       <small 
       class="error"
       *ngIf="productNameTaken">Product name is already taken</small>
+
+      <small 
+      class="error"
+      *ngIf="invalidProductName">Invaild product name (ex. Product #123)</small>
   
     </div>
   

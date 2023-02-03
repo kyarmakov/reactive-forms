@@ -21,4 +21,10 @@ export class CustomValidationService {
       })
     )
   }
+
+  validateProductName(control: AbstractControl) {
+    const regex = /^Product\s#[0-9]+$/;
+    const valid = regex.test(control.value);
+    return valid ? null : { invalidProductName: true };
+  }
 }

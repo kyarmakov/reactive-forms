@@ -46,6 +46,14 @@ export class StockItemComponent {
     );
   }
 
+  get invalidProductName(): boolean {
+    return (
+      this.name.hasError('invalidProductName') &&
+      this.name.touched &&
+      !this.required('name')
+    );
+  }
+
   ////////////////////
   onAddProduct(): void {
     if (this.item.valid) {
