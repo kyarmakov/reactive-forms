@@ -43,6 +43,11 @@ export class StockSelectorComponent {
   handleAddToCart(): void {
     if (this.selector.valid) {
       this.added.emit(this.selector.value);
+      this.selector.reset();
+      this.selector.patchValue({
+        product_id: '',
+        quantity: 10
+      })
     }
     else {
       this.selector.markAllAsTouched();

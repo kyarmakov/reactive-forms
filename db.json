@@ -19,18 +19,28 @@
       "name": "Product #1",
       "price": 10,
       "id": 5
+    },
+    {
+      "name": "Product #5",
+      "price": 50,
+      "id": 6
+    },
+    {
+      "name": "Product #6",
+      "price": 60,
+      "id": 7
+    },
+    {
+      "name": "Product #7",
+      "price": 70,
+      "id": 8
     }
   ],
   "cart": [
     {
-      "product_id": 5,
-      "quantity": 50,
+      "product_id": 8,
+      "quantity": 70,
       "id": 1
-    },
-    {
-      "product_id": 3,
-      "quantity": 30,
-      "id": 2
     }
   ]
 }
