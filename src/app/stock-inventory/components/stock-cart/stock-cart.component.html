@@ -1,0 +1,21 @@
+<div [formGroup]="parent">
+
+  <div class="stock-cart" formArrayName="cart">
+
+    <div *ngFor="let cartItem of cart; let i = index">
+      <div class="form-group grid grid--col-3" [formGroupName]="i">
+        <span>
+          {{ cartItem.value.product_id }}
+        </span>
+        <input 
+          type="number"
+          class="cart-input"
+          formControlName="quantity"
+        >
+        <button>Remove</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>

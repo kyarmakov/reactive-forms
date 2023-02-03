@@ -7,6 +7,7 @@ import { StockInventoryComponent } from './containers/stock-inventory/stock-inve
 import { StockItemComponent } from './components/stock-item/stock-item.component';
 import { StockSelectorComponent } from './components/stock-selector/stock-selector.component';
 import { StockCounterComponent } from './components/stock-counter/stock-counter.component';
+import { StockCartComponent } from './components/stock-cart/stock-cart.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { StockCounterComponent } from './components/stock-counter/stock-counter.
     StockInventoryComponent,
     StockItemComponent,
     StockSelectorComponent,
-    StockCounterComponent
+    StockCounterComponent,
+    StockCartComponent
   ],
   imports: [
     CommonModule,

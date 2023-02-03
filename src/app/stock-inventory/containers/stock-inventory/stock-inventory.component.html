@@ -15,6 +15,10 @@
     >
     </app-stock-selector>
 
+    <app-stock-cart
+      [parent]="form"
+    ></app-stock-cart>
+
   </form>
 
   <pre>{{ form.value | json }}</pre>

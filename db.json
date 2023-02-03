@@ -41,6 +41,16 @@
       "product_id": 8,
       "quantity": 70,
       "id": 1
+    },
+    {
+      "product_id": 2,
+      "quantity": 10,
+      "id": 2
+    },
+    {
+      "product_id": 8,
+      "quantity": 10,
+      "id": 3
     }
   ]
 }
