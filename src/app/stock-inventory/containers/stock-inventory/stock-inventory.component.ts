@@ -86,8 +86,19 @@ export class StockInventoryComponent implements OnInit {
     return (
       this.fb.group({
         product_id: cartItem.product_id,
-        quantity: cartItem.quantity
+        quantity: cartItem.quantity,
+        id: cartItem.id
       })
     );
   }
+
+  onRemove({ cartItem, i }) {
+    this.http.removeItemFromCart(cartItem)
+      .subscribe({
+        next: () => this.cart.removeAt(i),
+        error: (err: HttpErrorResponse) => console.log(err)
+      })
+  }
+
+
 }

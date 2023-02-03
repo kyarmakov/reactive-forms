@@ -17,6 +17,7 @@
 
     <app-stock-cart
       [parent]="form"
+      (removed)="onRemove($event)"
     ></app-stock-cart>
 
   </form>

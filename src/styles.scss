@@ -25,9 +25,14 @@ select {
   color: #555;
 }
 
+button {
+  height: 100%;
+}
+
 .grid {
   display: grid;
   column-gap: 24px;
+  align-items: center;
 }
 
 .grid--col-3 {

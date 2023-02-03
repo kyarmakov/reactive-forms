@@ -12,7 +12,10 @@
           class="cart-input"
           formControlName="quantity"
         >
-        <button>Remove</button>
+        <button
+          type="button"
+          (click)="handleRemove(cartItem, i)"
+        >Remove</button>
       </div>
     </div>
 

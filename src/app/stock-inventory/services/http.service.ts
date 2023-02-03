@@ -50,6 +50,14 @@ export class HttpService {
     )
   }
 
+  removeItemFromCart(cartItem: Cart): Observable<{}> {
+    return this.http.delete(`http://localhost:3000/cart/${cartItem.id}`).pipe(
+      catchError((err: HttpErrorResponse) => {
+        return throwError(() => console.log(err.message))
+      })
+    )
+  }
+
   checkProductNameNotTaken(productName: string): Observable<boolean> {
     return this.http.get<Product[]>(`http://localhost:3000/products`).pipe(
       map((products: Product[]) => {
