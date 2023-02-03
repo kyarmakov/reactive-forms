@@ -9,7 +9,7 @@ import { Product } from '../../models/product.model';
 })
 export class StockItemComponent {
   @Input() parent: FormGroup;
-  @Output() added = new EventEmitter<Product>();
+  @Output() created = new EventEmitter<Product>();
 
 
   /// GETTERS ///
@@ -55,9 +55,9 @@ export class StockItemComponent {
   }
 
   ////////////////////
-  onAddProduct(): void {
+  handleCreateProduct(): void {
     if (this.item.valid) {
-      this.added.emit(this.item.value);
+      this.created.emit(this.item.value);
       this.item.reset();
     }
   }

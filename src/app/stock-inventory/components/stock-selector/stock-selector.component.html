@@ -1,3 +1,25 @@
 <div [formGroup]="parent">
-  app-stock-selector works!
+  
+  <div class="stock-selector grid grid--col-3" formGroupName="selector">
+    <select 
+      name="productName" 
+      id="productName"
+      formControlName="product_id"
+    >
+      <option value="" disabled>Select product...</option>
+      <option value=""></option>
+    </select>
+
+    <input type="number" class="form-input" formControlName="quantity">
+
+    <button
+      type="button"
+      class="btn"
+    >
+      Add to Cart
+    </button>
+  </div>
+
+  <pre>{{ selector.value | json }}</pre>
+
 </div>

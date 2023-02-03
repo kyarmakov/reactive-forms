@@ -24,7 +24,7 @@ export class StockInventoryComponent implements OnInit {
       price: [null, [Validators.required, this.customValidator.validatePrice]]
     }),
     selector: this.fb.group({
-      product_id: [null],
+      product_id: [""],
       quantity: [null]
     })
   });
@@ -40,8 +40,8 @@ export class StockInventoryComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onAddProduct(product: Product): void {
-    this.http.addProduct(product)
+  onCreateProduct(product: Product): void {
+    this.http.createProduct(product)
       .subscribe((product: Product) => console.log(product))
   }
 }

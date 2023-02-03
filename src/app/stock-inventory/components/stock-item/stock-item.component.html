@@ -1,5 +1,5 @@
 <div [formGroup]="parent">
-  <div class="create-product" formGroupName="item">
+  <div class="create-product grid grid--col-3" formGroupName="item">
     <div class="form-group">
       <input 
         type="text" 
@@ -51,9 +51,9 @@
       type="button"
       class="btn"
       [disabled]="item.invalid"
-      (click)="onAddProduct()"
+      (click)="handleCreateProduct()"
     >
-      Add Product
+      Create Product
     </button>
   </div>
 </div>

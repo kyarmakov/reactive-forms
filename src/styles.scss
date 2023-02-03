@@ -12,8 +12,20 @@ body {
   color: #eee;
 }
 
-input {
+input,
+select {
   width: 100%;
   padding: 8px 12px;
   border: none;
+  background-color: #fff;
+  color: #555;
+}
+
+.grid {
+  display: grid;
+  column-gap: 24px;
+}
+
+.grid--col-3 {
+  grid-template-columns: 3fr 1fr 1fr;
 }

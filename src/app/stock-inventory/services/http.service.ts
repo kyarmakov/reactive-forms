@@ -12,7 +12,7 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  addProduct(product: Product): Observable<Product> {
+  createProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(`http://localhost:3000/products`, product).pipe(
       tap((product: Product) => this.products.push(product)),
       catchError((err: HttpErrorResponse) => {
