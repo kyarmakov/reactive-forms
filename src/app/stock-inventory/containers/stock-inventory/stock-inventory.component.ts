@@ -53,7 +53,15 @@ export class StockInventoryComponent implements OnInit {
         error: (err: HttpErrorResponse) => console.log(err)
       })
 
-      
+    this.http.getCartItems()
+      .subscribe({
+        next: (cartItems: Cart[]) => {
+          cartItems.forEach((cartItem: Cart) => {
+            this.cart.push(this.createCart(cartItem));
+          })
+        },
+        error: (err: HttpErrorResponse) => console.log(err)
+      })  
   }
 
   onCreateProduct(product: Product): void {

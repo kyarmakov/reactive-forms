@@ -25,6 +25,14 @@ export class HttpService {
     )
   }
 
+  getCartItems(): Observable<Cart[]> {
+    return this.http.get<Cart[]>(`http://localhost:3000/cart`).pipe(
+      catchError((err: HttpErrorResponse) => {
+        return throwError(() => console.log(err))
+      })
+    )
+  }
+
   addProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(`http://localhost:3000/products`, product).pipe(
       tap((product: Product) => this.products.push(product)),
