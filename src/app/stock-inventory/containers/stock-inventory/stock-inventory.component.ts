@@ -27,7 +27,7 @@ export class StockInventoryComponent implements OnInit {
       price: [null, [Validators.required, this.customValidator.validatePrice]]
     }),
     selector: this.fb.group({
-      product_id: [""],
+      product_id: ["", [Validators.required]],
       quantity: [10]
     })
   });

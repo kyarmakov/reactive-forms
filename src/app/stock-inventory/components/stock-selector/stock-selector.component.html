@@ -1,19 +1,29 @@
 <div [formGroup]="parent">
   
   <div class="stock-selector grid grid--col-3" formGroupName="selector">
-    <select 
-      name="productName" 
-      id="productName"
-      formControlName="product_id"
-    >
-      <option value="" disabled>Select product...</option>
-      <option 
-        [ngValue]="product.id" 
-        *ngFor="let product of products"
+    <div class="form-group">
+      <select 
+        name="productName" 
+        id="productName"
+        [ngClass]="{
+          'is-invalid': product_id.invalid && product_id.touched,
+          'is-valid': product_id.valid
+        }"
+        formControlName="product_id"
       >
-        {{ product.name }}
-      </option>
-    </select>
+        <option value="" disabled>Select product...</option>
+        <option 
+          [ngValue]="product.id" 
+          *ngFor="let product of products"
+        >
+          {{ product.name }}
+        </option>
+      </select>
+
+      <small class="error" *ngIf="required('product_id')">
+        Select a product
+      </small>
+    </div>
 
     <app-stock-counter
       [max]="1000"
@@ -25,6 +35,7 @@
     <button
       type="button"
       class="btn"
+      [disabled]="selector.invalid"
     >
       Add to Cart
     </button>
