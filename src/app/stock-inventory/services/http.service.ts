@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
 import { Product } from '../models/product.model';
+import { Cart } from '../models/cart.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +25,17 @@ export class HttpService {
     )
   }
 
-  createProduct(product: Product): Observable<Product> {
+  addProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(`http://localhost:3000/products`, product).pipe(
       tap((product: Product) => this.products.push(product)),
+      catchError((err: HttpErrorResponse) => {
+        return throwError(() => new Error(err.message))
+      })
+    )
+  }
+
+  addCartItem(cartItem: Cart): Observable<Cart> {
+    return this.http.post<Cart>(`http://localhost:3000/cart`, cartItem).pipe(
       catchError((err: HttpErrorResponse) => {
         return throwError(() => new Error(err.message))
       })

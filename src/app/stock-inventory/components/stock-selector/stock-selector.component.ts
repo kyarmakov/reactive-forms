@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Cart } from '../../models/cart.model';
 import { Product } from '../../models/product.model';
 import { CustomValidationService } from '../../services/custom-validation.service';
 
@@ -11,6 +12,8 @@ import { CustomValidationService } from '../../services/custom-validation.servic
 export class StockSelectorComponent {
   @Input() parent: FormGroup;
   @Input() products: Product[];
+
+  @Output() added = new EventEmitter<Cart>();
 
   constructor(private customValidator: CustomValidationService) {}
 
@@ -26,12 +29,24 @@ export class StockSelectorComponent {
   get quantity() {
     return this.selector.get('quantity');
   }
+  ////////////////////
 
-
+  /// VALIDATORS ///
   required(control: string): boolean {
     return (
       this.selector.get(`${control}`).hasError('required') &&
       this.selector.get(`${control}`).touched
     ); 
   }
+  ///////////////////
+
+  handleAddToCart(): void {
+    if (this.selector.valid) {
+      this.added.emit(this.selector.value);
+    }
+    else {
+      this.selector.markAllAsTouched();
+    }
+  }
+
 }

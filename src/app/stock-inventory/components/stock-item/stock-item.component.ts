@@ -60,5 +60,8 @@ export class StockItemComponent {
       this.created.emit(this.item.value);
       this.item.reset();
     }
+    else {
+      this.item.markAllAsTouched();
+    }
   }
 }

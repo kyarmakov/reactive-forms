@@ -10,12 +10,13 @@
 
     <app-stock-selector 
       [parent]="form"
-      [products]="products"  
+      [products]="products"
+      (added)="onCreateCartItem($event)"
     >
     </app-stock-selector>
 
   </form>
 
-  <!-- <pre>{{ item.valid | json }}</pre> -->
+  <pre>{{ form.value | json }}</pre>
 
 </div>

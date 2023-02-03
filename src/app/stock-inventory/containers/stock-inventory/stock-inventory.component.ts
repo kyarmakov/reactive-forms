@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CustomValidationService } from '../../services/custom-validation.service';
 import { HttpService } from '../../services/http.service';
 
 import { Product } from '../../models/product.model';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Cart } from '../../models/cart.model';
 
 
 
@@ -40,6 +41,10 @@ export class StockInventoryComponent implements OnInit {
     private http: HttpService
   ) {}
 
+  get cart() {
+    return this.form.get('cart') as FormArray;
+  }
+
 
   ngOnInit(): void {
     this.http.getProducts()
@@ -52,14 +57,29 @@ export class StockInventoryComponent implements OnInit {
   }
 
   onCreateProduct(product: Product): void {
-    this.http.createProduct(product)
+    this.http.addProduct(product)
       .subscribe({
         next: (product: Product) => console.log(product),
         error: (err: HttpErrorResponse) => console.log(err)
       })
   }
 
-  createCartItem(product: Product): void {
-    console.log(product)
+  onCreateCartItem(cartItem: Cart): void {
+    this.http.addCartItem(cartItem)
+      .subscribe({
+        next: (cartItem: Cart) => {
+          this.cart.push(this.createCart(cartItem))
+        },
+        error: (err: HttpErrorResponse) => console.log(err)
+      })
+  }
+
+  createCart(cartItem: Cart): FormGroup {
+    return (
+      this.fb.group({
+        product_id: cartItem.product_id,
+        quantity: cartItem.quantity
+      })
+    );
   }
 }
