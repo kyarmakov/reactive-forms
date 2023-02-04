@@ -8,7 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ## JSON-SERVER
 
-Run `npm run db` to start fake database server. Navigate to `http://localhost:3000/`. Any changes will be reflected in db.json file in the root directory.
+Run `npm run db` in another CLI to start fake database server. Navigate to `http://localhost:3000/`. Any changes will be reflected in db.json file in the root directory.
 
 ## Code scaffolding
 
