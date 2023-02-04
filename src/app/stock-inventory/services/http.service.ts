@@ -58,6 +58,14 @@ export class HttpService {
     )
   }
 
+  updateCartItem(cartItem: Cart): Observable<Cart> {
+    return this.http.put<Cart>(`http://localhost:3000/cart/${cartItem.id}`, cartItem).pipe(
+      catchError((err: HttpErrorResponse) => {
+        return throwError(() => console.log(err))
+      })
+    )
+  }
+
   checkProductNameNotTaken(productName: string): Observable<boolean> {
     return this.http.get<Product[]>(`http://localhost:3000/products`).pipe(
       map((products: Product[]) => {

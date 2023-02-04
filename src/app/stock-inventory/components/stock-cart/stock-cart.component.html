@@ -12,6 +12,7 @@
           [max]="1000"
           [min]="10"
           [step]="10"
+          (changed)="handleChange(cartItem)"
           formControlName="quantity">
         </app-stock-counter>
         

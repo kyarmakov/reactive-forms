@@ -47,6 +47,7 @@ export class StockInventoryComponent implements OnInit {
 
 
   ngOnInit(): void {
+
     this.http.getProducts()
       .subscribe({
         next: (products: Product[]) => this.products = products,
@@ -61,7 +62,9 @@ export class StockInventoryComponent implements OnInit {
           })
         },
         error: (err: HttpErrorResponse) => console.log(err)
-      })  
+      })
+
+    
   }
 
   onCreateProduct(product: Product): void {
@@ -92,7 +95,7 @@ export class StockInventoryComponent implements OnInit {
     );
   }
 
-  onRemove({ cartItem, i }) {
+  onRemove({ cartItem, i }): void {
     this.http.removeItemFromCart(cartItem)
       .subscribe({
         next: () => this.cart.removeAt(i),
@@ -100,5 +103,13 @@ export class StockInventoryComponent implements OnInit {
       })
   }
 
+
+  onUpdate(cartItem: Cart): void {
+    this.http.updateCartItem(cartItem)
+      .subscribe({
+        next: (cartItem: Cart) => console.log(cartItem),
+        error: (err: HttpErrorResponse) => console.log(err)
+      })
+  }
 
 }

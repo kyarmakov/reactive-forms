@@ -1,5 +1,6 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Cart } from '../../models/cart.model';
 
 const COUNTER_CONTROL_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
@@ -22,6 +23,8 @@ export class StockCounterComponent implements ControlValueAccessor {
   @Input() min: number;
   @Input() step: number;
 
+  @Output() changed = new EventEmitter();
+
 
   writeValue(value: number): void {
     this.value = value;
@@ -40,6 +43,7 @@ export class StockCounterComponent implements ControlValueAccessor {
     if (this.value < this.max) {
       this.value += this.step;
       this.onValueChange(this.value);
+      this.changed.emit();
     }
     this.onTouched();
   }
@@ -48,6 +52,7 @@ export class StockCounterComponent implements ControlValueAccessor {
     if (this.value > this.min) {
       this.value -= this.step;
       this.onValueChange(this.value);
+      this.changed.emit();
     }
     this.onTouched();
   }
