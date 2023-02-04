@@ -22,6 +22,10 @@
       (changed)="onUpdate($event)"
     ></app-stock-cart>
 
+    <div class="total" *ngIf="total">
+      Total: {{ total | currency }}
+    </div>
+
   </form>
 
   <pre>{{ form.value | json }}</pre>

@@ -20,6 +20,8 @@ export class StockInventoryComponent implements OnInit {
 
   productMap: Map<number, Product>;
 
+  total: number;
+
   form: FormGroup = this.fb.group({
     item: this.fb.group({
       name: [
@@ -68,6 +70,16 @@ export class StockInventoryComponent implements OnInit {
 
     this.getProductMap();
 
+    this.cart.valueChanges
+      .subscribe(() => this.getProductMap())
+  }
+
+  getTotalPrice(): void {
+    console.log(this.cart.value)
+    const total = this.cart.value.reduce((sum: number, cartItem: Cart) => {
+      return sum + (this.productMap.get(cartItem.product_id).price * cartItem.quantity)
+    }, 0);
+    this.total = total;
   }
 
   getProductMap(): void {
@@ -76,6 +88,7 @@ export class StockInventoryComponent implements OnInit {
       .subscribe((products: Product[]) => {
         const myMap = products.map<[number, Product]>((product: Product) => [product.id, product]);
         this.productMap = new Map<number, Product>(myMap);
+        this.getTotalPrice();
         // console.log(this.productMap)
       })
   }

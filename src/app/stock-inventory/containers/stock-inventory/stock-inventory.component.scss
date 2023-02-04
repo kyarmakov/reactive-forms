@@ -5,6 +5,10 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+
+    .total {
+      font-size: 25px;
+    }
   }
 }
 
