@@ -18,6 +18,8 @@ import { Cart } from '../../models/cart.model';
 export class StockInventoryComponent implements OnInit {
   products: Product[];
 
+  productMap: Map<number, Product>;
+
   form: FormGroup = this.fb.group({
     item: this.fb.group({
       name: [
@@ -64,13 +66,30 @@ export class StockInventoryComponent implements OnInit {
         error: (err: HttpErrorResponse) => console.log(err)
       })
 
-    
+    this.getProductMap();
+
+  }
+
+  getProductMap(): void {
+    const productsObservable = this.http.getProducts();
+    productsObservable
+      .subscribe((products: Product[]) => {
+        const myMap = products.map<[number, Product]>((product: Product) => [product.id, product]);
+        this.productMap = new Map<number, Product>(myMap);
+        // console.log(this.productMap)
+      })
   }
 
   onCreateProduct(product: Product): void {
     this.http.addProduct(product)
       .subscribe({
-        next: (product: Product) => console.log(product),
+        next: (product: Product) => {
+          this.http.getProducts()
+            .subscribe((products: Product[]) => {
+              this.products = products;
+              this.getProductMap();
+            })
+        },
         error: (err: HttpErrorResponse) => console.log(err)
       })
   }

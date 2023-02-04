@@ -19,33 +19,78 @@
       "name": "Product #123",
       "price": 10,
       "id": 4
+    },
+    {
+      "name": "Product #11",
+      "price": 10000,
+      "id": 5
+    },
+    {
+      "name": "Product #12",
+      "price": 10000,
+      "id": 6
+    },
+    {
+      "name": "Product #13",
+      "price": 1000000,
+      "id": 7
+    },
+    {
+      "name": "Product #14",
+      "price": 10,
+      "id": 8
+    },
+    {
+      "name": "Product #15",
+      "price": 15000,
+      "id": 9
+    },
+    {
+      "name": "Product #16",
+      "price": 160,
+      "id": 10
+    },
+    {
+      "name": "Product #17",
+      "price": 170,
+      "id": 11
+    },
+    {
+      "name": "Product #18",
+      "price": 4800,
+      "id": 12
     }
   ],
   "cart": [
     {
-      "product_id": 2,
-      "quantity": 100,
+      "product_id": 9,
+      "quantity": 150,
+      "id": 1
+    },
+    {
+      "product_id": 8,
+      "quantity": 10,
       "id": 2
     },
     {
-      "product_id": 3,
+      "product_id": 4,
       "quantity": 10,
+      "id": 3
+    },
+    {
+      "product_id": 10,
+      "quantity": 110,
+      "id": 4
+    },
+    {
+      "product_id": 11,
+      "quantity": 130,
       "id": 5
     },
     {
-      "product_id": 3,
-      "quantity": 80,
-      "id": 6
-    },
-    {
-      "product_id": 4,
-      "quantity": 20,
-      "id": 7
-    },
-    {
-      "product_id": 1,
+      "product_id": 12,
       "quantity": 10,
-      "id": 8
+      "id": 6
     }
   ]
 }

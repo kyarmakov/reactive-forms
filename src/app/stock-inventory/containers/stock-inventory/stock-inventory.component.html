@@ -17,6 +17,7 @@
 
     <app-stock-cart
       [parent]="form"
+      [map]="productMap"
       (removed)="onRemove($event)"
       (changed)="onUpdate($event)"
     ></app-stock-cart>

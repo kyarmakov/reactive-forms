@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormArray, FormGroup } from '@angular/forms';
 
 import { Cart } from '../../models/cart.model';
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-stock-cart',
@@ -10,6 +11,7 @@ import { Cart } from '../../models/cart.model';
 })
 export class StockCartComponent {
   @Input() parent: FormGroup;
+  @Input() map: Map<number, Product>;
 
   @Output() removed = new EventEmitter<{ cartItem: Cart, i: number }>();
   @Output() changed = new EventEmitter<Cart>();

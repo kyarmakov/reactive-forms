@@ -3,9 +3,14 @@
   <div class="stock-cart" formArrayName="cart">
 
     <div *ngFor="let cartItem of cart; let i = index">
-      <div class="form-group grid grid--col-3" [formGroupName]="i">
-        <span>
+      <div class="form-group grid grid--col-4" [formGroupName]="i">
+        <span *ngIf="map">
           {{ cartItem.value.product_id }}
+          {{ map.get(cartItem.value.product_id).name }}
+        </span>
+
+        <span *ngIf="map">
+          {{ map.get(cartItem.value.product_id).price | currency }}
         </span>
 
         <app-stock-counter 
